@@ -31,11 +31,31 @@ def largest_contiguous_subsum(list)
     subs.map(&:sum).max
 end
 
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8
+
+# list = [2, 3, -6, 7, -6, 7]
+# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+# list = [-5, -1, -3]
+# p largest_contiguous_subsum(list) # => -1 (from [-1])
+
+def largest_contiguous_subsum2(list)
+    largest_sum = 0
+    current_sum = 0
+    list.each_with_index do |ele, i|
+        current_sum += ele
+        if current_sum > largest_sum
+            largest_sum = current_sum
+        end
+    end
+end
+
 list = [5, 3, -7]
-p largest_contiguous_subsum(list) # => 8
+p largest_contiguous_subsum2(list) # => 8
 
 list = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+p largest_contiguous_subsum2(list) # => 8 (from [7, -6, 7])
 
 list = [-5, -1, -3]
-p largest_contiguous_subsum(list) # => -1 (from [-1])
+p largest_contiguous_subsum2(list) # => -1 (from [-1])
